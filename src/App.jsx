@@ -6,9 +6,11 @@ import { Controls } from './components/Controls/Controls';
 import styles from './App.module.css';
 import { useState } from 'react';
 function App() {
-  const [messages, setMessages] = useState(MESSAGES); 
+  const [messages, setMessages] = useState([]); 
   
-
+function handleContentSend(content) {
+  setMessages(prevMessages => [...prevMessages, { role: 'user', content }]);
+}
   return (
   <div className={styles.App}>
     <header className={styles.Header}>
@@ -18,15 +20,10 @@ function App() {
     <div className={styles.ChatContainer}>
       <Chat messages={messages} />
     </div>
-    <Controls />
+    <Controls onSendMessage={handleContentSend} />
   </div>
   )
 }
 
-const MESSAGES = [
-  {role:'user', content: 'Hola, ¿cómo estás?'},
-  {role:'assistant', content: 'Hola, estoy bien, gracias. ¿En qué puedo ayudarte?'},
-  {role:'user', content: '¿Cuál es la capital de Francia?'},
-  {role:'assistant', content: 'La capital de Francia es París.'},
-]
+
 export default App
