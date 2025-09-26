@@ -1,7 +1,8 @@
 
 import { Chat } from './components/Chat/Chat';
 import { Controls } from './components/Controls/Controls';
-import { Assistant } from './assistants/googleai/Assistant';
+//import { Assistant } from './assistants/googleai/Assistant';
+import { Assistant } from './assistants/openai/openai';
 import styles from './App.module.css';
 import { useState } from 'react';
 
@@ -18,7 +19,7 @@ function App() {
   async function handleContentSend(content) {
     addMessage({ role: 'user', content });
     try {
-      const result = await assistant.chat(content);
+      const result = await assistant.chat(content,messages);
       addMessage({ role: 'assistant', content: result });
     } catch (error) {
       addMessage({ role: 'system', content: 'Sorry, something went wrong. Please try again later.' });
@@ -35,8 +36,7 @@ function App() {
         <Chat messages={messages} />
       </div>
       <Controls onSendMessage={handleContentSend} />
-    </div>
-  )
+    </div> )
 }
 
 
