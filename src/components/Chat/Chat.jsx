@@ -1,6 +1,6 @@
 import styles from './Chat.module.css';
 
-const WELCOME_MESSAGE = {role:'assistant', content: 'Hola, soy tu asistente virtual. ¿En qué puedo ayudarte hoy?'};
+const WELCOME_MESSAGE = {role:'assistant', content: 'Hello, I am your virtual assistant. How can I help you today?'};
 
 export function Chat({messages}) {
 
